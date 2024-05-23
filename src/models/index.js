@@ -1,6 +1,8 @@
 'use strict';
 
+require('dotenv').config();
 const fs = require('fs');
+const { request } = require('http');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
