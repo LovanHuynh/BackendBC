@@ -44,20 +44,20 @@ let getAllDoctor = () => {
                 attributes: {
                     exclude: ['password', 'image']
                 },
-                include: [
-                    {
-                        model: DoctorInfor,
-                        as: 'doctorInfor',
-                        attributes: ['clinicId', 'specialtyId', 'addressClinic', 'nameClinic', 'note'],
-                        include: [
-                            {
-                                model: Specialty,
-                                as: 'specialty',
-                                attributes: ['name', 'descriptionHTML', 'descriptionMarkdown']
-                            }
-                        ]
-                    }
-                ]
+                // include: [
+                //     {
+                //         model: DoctorInfor,
+                //         as: 'doctorInfor',
+                //         attributes: ['clinicId', 'specialtyId', 'addressClinic', 'nameClinic', 'note'],
+                //         include: [
+                //             {
+                //                 model: Specialty,
+                //                 as: 'specialty',
+                //                 attributes: ['name', 'descriptionHTML', 'descriptionMarkdown']
+                //             }
+                //         ]
+                //     }
+                // ]
 
             });
 
@@ -195,7 +195,7 @@ let getDeatilDoctorById = (id) => {
                     nest: true
                 })
                 if (data && data.image) {
-                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                    data.image = Buffer.from(data.image, 'base64').toString('binary');
                 }
                 if (!data) data = {};
                 resolve({
@@ -227,7 +227,7 @@ let bulkCreateSchedule = (data) => {
                     })
                 }
                 let exitsting = await db.Schedule.findAll({
-                    where: { doctorId: data.doctorId, date: data.date },
+                    where: { doctorId: data.doctorId, date: '' + data.date },
                     attributes: ['timeType', 'date', 'doctorId', 'maxNumber'],
                     raw: true,
                 })
@@ -360,7 +360,7 @@ let getProfileDoctorById = (doctorId) => {
                     nest: true
                 })
                 if (data && data.image) {
-                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                    data.image = Buffer.from(data.image, 'base64').toString('binary');
                 }
                 if (!data) data = [];
                 resolve({

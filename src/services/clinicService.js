@@ -37,7 +37,7 @@ let getAllClinic = () => {
             let data = await db.Clinic.findAll();
             if (data && data.length > 0) {
                 data.map(item => {
-                    item.image = new Buffer(item.image, 'base64').toString('binary');
+                    item.image = Buffer.from(item.image, 'base64').toString('binary');
                     return item;
                 })
 
@@ -142,7 +142,7 @@ let createHandbook = (data) => {
                 })
             }
             else {
-                await db.HandBook.create({
+                await db.Handbook.create({
                     name: data.name,
                     address: data.address,
                     image: data.image,
@@ -162,10 +162,10 @@ let createHandbook = (data) => {
 let getAllHandbook = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let data = await db.HandBook.findAll();
+            let data = await db.Handbook.findAll();
             if (data && data.length > 0) {
                 data.map(item => {
-                    item.image = new Buffer(item.image, 'base64').toString('binary');
+                    item.image = Buffer.from(item.image, 'base64').toString('binary');
                     return item;
                 })
 

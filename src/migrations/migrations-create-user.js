@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       image: {
-        type: Sequelize.STRING
+        type: Sequelize.Sequelize.BLOB('long')
       },
       roleId: {
         type: Sequelize.STRING

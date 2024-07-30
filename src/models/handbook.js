@@ -4,7 +4,7 @@ const {
 } = require('sequelize');
 const { STRING } = require('sequelize/lib/data-types');
 module.exports = (sequelize, DataTypes) => {
-    class HandBook extends Model {
+    class Handbook extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 
         }
     };
-    HandBook.init({
+    Handbook.init({
         name: DataTypes.STRING,
         address: DataTypes.STRING,
         descriptionHTML: DataTypes.TEXT,
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         image: DataTypes.STRING
     }, {
         sequelize,
-        modelName: 'HandBook',
+        modelName: 'Handbook',
     });
-    return HandBook;
+    return Handbook;
 };
