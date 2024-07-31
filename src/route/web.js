@@ -22,6 +22,9 @@ let initWebRouters = (app) => {
     // router.get('/delete-crud', homeController.deleteCRUD);// xoa nguoi dung
 
     //bat dau viet api
+    router.get('/', (req, res) => {
+        res.send('Welcome to the Home Page!');
+    });
     router.post('/api/login', userController.handleLogin);
     router.get('/api/get-all-users', userController.handleGetAllUsers);
     router.post('/api/create-new-user', userController.handleCreateNewUser);
